@@ -1,0 +1,106 @@
+<mxfile host="65bd71144e">
+    <diagram id="JMR2sXappKfWuI05o44C" name="Page-1">
+        <mxGraphModel dx="1288" dy="944" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="light-dark(#FFFFFF,#121212)" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#f8cecc;strokeColor=#b85450;" value="Browser" vertex="1">
+                    <mxGeometry height="80" width="140" x="80" y="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-5" edge="1" parent="1" style="endArrow=none;html=1;" value="">
+                    <mxGeometry height="50" relative="1" width="50" as="geometry">
+                        <mxPoint x="149" y="940" as="sourcePoint"/>
+                        <mxPoint x="149.5" y="120" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Server" vertex="1">
+                    <mxGeometry height="80" width="140" x="620" y="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-10" edge="1" parent="1" style="endArrow=none;html=1;" value="">
+                    <mxGeometry height="50" relative="1" width="50" as="geometry">
+                        <mxPoint x="689" y="940" as="sourcePoint"/>
+                        <mxPoint x="689.5" y="120" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-16" edge="1" parent="1" style="endArrow=classic;html=1;" value="">
+                    <mxGeometry height="50" relative="1" width="50" as="geometry">
+                        <mxPoint x="150" y="171" as="sourcePoint"/>
+                        <mxPoint x="690" y="171" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-17" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="https://studies.cs.helsinki.fi/exampleapp/spa" vertex="1">
+                    <mxGeometry height="30" width="320" x="260" y="131" as="geometry"/>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-18" edge="1" parent="1" style="endArrow=classic;html=1;dashed=1;" value="">
+                    <mxGeometry height="50" relative="1" width="50" as="geometry">
+                        <mxPoint x="690" y="231" as="sourcePoint"/>
+                        <mxPoint x="150" y="231" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-19" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="HTML Document" vertex="1">
+                    <mxGeometry height="30" width="320" x="260" y="191" as="geometry"/>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-24" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="GET https://studies.cs.helsinki.fi/exampleapp/style.css" vertex="1">
+                    <mxGeometry height="30" width="320" x="260" y="251" as="geometry"/>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-25" edge="1" parent="1" style="endArrow=classic;html=1;" value="">
+                    <mxGeometry height="50" relative="1" width="50" as="geometry">
+                        <mxPoint x="150" y="291" as="sourcePoint"/>
+                        <mxPoint x="690" y="291" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-26" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="css file" vertex="1">
+                    <mxGeometry height="30" width="320" x="260" y="311" as="geometry"/>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-27" edge="1" parent="1" style="endArrow=classic;html=1;dashed=1;" value="">
+                    <mxGeometry height="50" relative="1" width="50" as="geometry">
+                        <mxPoint x="690" y="351" as="sourcePoint"/>
+                        <mxPoint x="150" y="351" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-28" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="GET https://studies.cs.helsinki.fi/exampleapp/main.js" vertex="1">
+                    <mxGeometry height="30" width="320" x="260" y="371" as="geometry"/>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-29" edge="1" parent="1" style="endArrow=classic;html=1;" value="">
+                    <mxGeometry height="50" relative="1" width="50" as="geometry">
+                        <mxPoint x="150" y="411" as="sourcePoint"/>
+                        <mxPoint x="690" y="411" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-30" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="js file" vertex="1">
+                    <mxGeometry height="30" width="320" x="260" y="431" as="geometry"/>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-31" edge="1" parent="1" style="endArrow=classic;html=1;dashed=1;" value="">
+                    <mxGeometry height="50" relative="1" width="50" as="geometry">
+                        <mxPoint x="690" y="471" as="sourcePoint"/>
+                        <mxPoint x="150" y="471" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-33" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=#82b366;fillColor=#d5e8d4;align=center;verticalAlign=middle;rounded=0;" value="Now the browser excute the js file that contain code to make http request to fetch the notes from the server" vertex="1">
+                    <mxGeometry height="30" width="290" x="260" y="481" as="geometry"/>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-34" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="GET https://studies.cs.helsinki.fi/exampleapp/data.json" vertex="1">
+                    <mxGeometry height="30" width="320" x="260" y="531" as="geometry"/>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-35" edge="1" parent="1" style="endArrow=classic;html=1;" value="">
+                    <mxGeometry height="50" relative="1" width="50" as="geometry">
+                        <mxPoint x="150" y="571" as="sourcePoint"/>
+                        <mxPoint x="690" y="571" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-36" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="[{&quot;content&quot;: &quot;new note&quot;, &quot;date&quot;: &quot;25-10-2026&quot;},...]" vertex="1">
+                    <mxGeometry height="30" width="320" x="260" y="591" as="geometry"/>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-37" edge="1" parent="1" style="endArrow=classic;html=1;dashed=1;" value="">
+                    <mxGeometry height="50" relative="1" width="50" as="geometry">
+                        <mxPoint x="690" y="631" as="sourcePoint"/>
+                        <mxPoint x="150" y="631" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="lt1RhxWF9EIANF0WtZ72-38" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=#82b366;fillColor=#d5e8d4;align=center;verticalAlign=middle;rounded=0;" value="The browser excutes the callback function that render the notes" vertex="1">
+                    <mxGeometry height="30" width="290" x="260" y="661" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
