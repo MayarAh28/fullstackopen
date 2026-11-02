@@ -1,22 +1,33 @@
 import { useState } from "react";
 
-const Display = ({ counter }) => <p>{counter}</p>;
-
-const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>;
-
 const App = () => {
-  const [counter, setCounter] = useState(0);
+  const [left, setLeft] = useState(0);
+  const [right, setRight] = useState(0);
+  const [allClicks, setAll] = useState([]);
+  const [total, setTotal] = useState(0);
 
-  const handleIncrease = () => setCounter(counter + 1);
-  const handleDecrease = () => setCounter(counter - 1);
-  const handleReset = () => setCounter(0);
+  const hello = (who) => console.log("Hello", who);
+
+  const handleLeftClick = () => {
+    setAll(allClicks.concat("L"));
+    setLeft(left + 1);
+    setTotal(left + right);
+  };
+
+  const handleRightClick = () => {
+    setAll(allClicks.concat("R"));
+    setRight(right + 1);
+    setTotal(left + right);
+  };
 
   return (
     <div>
-      <Display counter={counter} />
-      <Button onClick={handleIncrease} text={"Plus 1"} />
-      <Button onClick={handleDecrease} text={"Minus 1"} />
-      <Button onClick={handleReset} text={"Reset to 0"} />
+      {left}
+      <button onClick={() => hello("Mayar")}>left</button>
+      <button onClick={handleRightClick}>right</button>
+      {right}
+      <p>{allClicks.join("-")}</p>
+      <p>Total: {total}</p>
     </div>
   );
 };
