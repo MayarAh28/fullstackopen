@@ -11,7 +11,12 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const isNameExist = persons.some((person) => person.name === newName);
 
+    if (isNameExist) {
+      alert(`${newName} is already added to phonebook`);
+      return;
+    }
     const newPersons = [...persons, { name: newName }];
     setPersons(newPersons);
   };
