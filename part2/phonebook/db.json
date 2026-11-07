@@ -9,6 +9,16 @@
       "name": "Ada Lovelace",
       "number": "39-44-5323523",
       "id": "2"
+    },
+    {
+      "name": "Mayar",
+      "number": "0987654321",
+      "id": "Emv1kcxVUlI"
+    },
+    {
+      "name": "Mayara",
+      "number": "0987654321",
+      "id": "V425Hm4Avys"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

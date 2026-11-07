@@ -44,13 +44,27 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const isNameExist = persons.some((person) => person.name === newName);
+    const personToChnage = persons.find((person) => person.name === newName);
+    const newPerson = { name: newName, number: newNumber };
 
-    if (isNameExist) {
-      alert(`${newName} is already added to phonebook`);
+    if (personToChnage) {
+      if (
+        window.confirm(
+          `${newName} is already added to phonebook, replace the old number with a new one?`
+        )
+      ) {
+        personService
+          .changeNumber(personToChnage.id, newPerson)
+          .then((newPerson) => {
+            setPersons(
+              persons.map((person) =>
+                person.id === personToChnage.id ? newPerson : person
+              )
+            );
+          });
+      }
       return;
     }
-    const newPerson = { name: newName, number: newNumber };
     personService.create(newPerson).then((person) => {
       setPersons([...persons, person]);
     });
