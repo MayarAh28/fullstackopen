@@ -34,17 +34,17 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const baseUrl = "http://localhost:3001/persons";
     const isNameExist = persons.some((person) => person.name === newName);
 
     if (isNameExist) {
       alert(`${newName} is already added to phonebook`);
       return;
     }
-    const newPersons = [
-      ...persons,
-      { name: newName, number: newNumber, id: persons.length + 1 },
-    ];
-    setPersons(newPersons);
+    const newPerson = { name: newName, number: newNumber };
+    axios.post(baseUrl, newPerson).then((response) => {
+      setPersons([...persons, response.data]);
+    });
   };
 
   return (
