@@ -3,6 +3,7 @@ import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
 import Persons from "./components/Persons";
 import axios from "axios";
+import personService from "./services/persons";
 
 const App = () => {
   const [persons, setPersons] = useState([]);
@@ -11,9 +12,7 @@ const App = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/persons")
-      .then((promise) => setPersons(promise.data));
+    personService.getAll().then((initialPersons) => setPersons(initialPersons));
   }, []);
 
   let filteredPersons = search
@@ -34,7 +33,6 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const baseUrl = "http://localhost:3001/persons";
     const isNameExist = persons.some((person) => person.name === newName);
 
     if (isNameExist) {
@@ -42,8 +40,8 @@ const App = () => {
       return;
     }
     const newPerson = { name: newName, number: newNumber };
-    axios.post(baseUrl, newPerson).then((response) => {
-      setPersons([...persons, response.data]);
+    personService.create(newPerson).then((person) => {
+      setPersons([...persons, person]);
     });
   };
 

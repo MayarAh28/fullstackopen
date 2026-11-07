@@ -24,6 +24,11 @@
       "name": "Mayar",
       "number": "0937609659",
       "id": "2CMayqSyN20"
+    },
+    {
+      "name": "Hadi",
+      "number": "0987654321",
+      "id": "psvrwPvZKoo"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
