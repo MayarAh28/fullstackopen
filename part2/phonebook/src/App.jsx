@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
 import Persons from "./components/Persons";
-import axios from "axios";
 import personService from "./services/persons";
 
 const App = () => {
@@ -31,6 +30,18 @@ const App = () => {
     setSearch(searchTerm);
   };
 
+  const handleDelete = (id) => {
+    const personToDelete = persons.find((person) => person.id === id);
+    if (window.confirm(`Delete ${personToDelete.name} ?`))
+      personService
+        .deletePerson(id)
+        .then(() => setPersons(persons.filter((person) => person.id !== id)))
+        .catch(() => {
+          alert("this person already deleted");
+          setPersons(persons.filter((person) => person.id !== id));
+        });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const isNameExist = persons.some((person) => person.name === newName);
@@ -43,6 +54,8 @@ const App = () => {
     personService.create(newPerson).then((person) => {
       setPersons([...persons, person]);
     });
+    setNewName("");
+    setNewNumber("");
   };
 
   return (
@@ -60,7 +73,7 @@ const App = () => {
       />
 
       <h2>Numbers</h2>
-      <Persons persons={filteredPersons} />
+      <Persons persons={filteredPersons} onDelete={handleDelete} />
     </div>
   );
 };
