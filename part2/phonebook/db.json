@@ -9,16 +9,6 @@
       "name": "Ada Lovelace",
       "number": "39-44-5323523",
       "id": "2"
-    },
-    {
-      "name": "Mayar",
-      "number": "0937609657",
-      "id": "Emv1kcxVUlI"
-    },
-    {
-      "name": "Hadi",
-      "number": "0987654321",
-      "id": "eHeipv5vcJs"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
