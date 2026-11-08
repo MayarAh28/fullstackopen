@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import countriesService from "./services/countries";
+import CountryInformation from "./components/CountryInformation";
 
 const App = () => {
   const [countries, setCountries] = useState([]);
   const [search, setSearch] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState(null);
 
   useEffect(() => {
     countriesService.getAll().then((data) => {
@@ -12,6 +14,11 @@ const App = () => {
   }, []);
   const handleSearch = (e) => {
     setSearch(e.target.value);
+    setSelectedCountry(null);
+  };
+
+  const handleSelectCountry = (country) => {
+    setSelectedCountry(country);
   };
 
   let filteredCountries = search
@@ -28,25 +35,18 @@ const App = () => {
       {search && filteredCountries.length > 10 ? (
         <p>Too many matches, specify another field</p>
       ) : filteredCountries.length === 1 ? (
-        <div>
-          <h1>{filteredCountries[0].name.common}</h1>
-          <p>Capital {filteredCountries[0].capital}</p>
-          <p>Area {filteredCountries[0].area}</p>
-          <h3>Languages</h3>
-          <ul>
-            {Object.values(filteredCountries[0]?.languages || {}).map(
-              (language) => (
-                <li key={language}>{language}</li>
-              )
-            )}
-          </ul>
-          <img src={filteredCountries[0].flags.png} />
-        </div>
+        <CountryInformation country={filteredCountries[0]} />
       ) : (
         <div>
-          {filteredCountries.map(country=><p>{country.name.common}</p>)}
+          {filteredCountries.map((country) => (
+            <div key={country.name.common}>
+              <span>{country.name.common} </span>
+              <button onClick={() => handleSelectCountry(country)}>show</button>
+            </div>
+          ))}
         </div>
       )}
+      {selectedCountry && <CountryInformation country={selectedCountry} />}
     </>
   );
 };
