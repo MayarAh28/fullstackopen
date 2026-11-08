@@ -3,12 +3,14 @@ import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
 import Persons from "./components/Persons";
 import personService from "./services/persons";
+import Notification from "./components/Notification";
 
 const App = () => {
   const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [search, setSearch] = useState("");
+  const [notification, setNotification] = useState("");
 
   useEffect(() => {
     personService.getAll().then((initialPersons) => setPersons(initialPersons));
@@ -44,30 +46,45 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const personToChnage = persons.find((person) => person.name === newName);
+    const personToChange = persons.find((person) => person.name === newName);
     const newPerson = { name: newName, number: newNumber };
 
-    if (personToChnage) {
+    if (personToChange) {
       if (
         window.confirm(
           `${newName} is already added to phonebook, replace the old number with a new one?`
         )
       ) {
         personService
-          .changeNumber(personToChnage.id, newPerson)
+          .changeNumber(personToChange.id, newPerson)
           .then((newPerson) => {
             setPersons(
               persons.map((person) =>
-                person.id === personToChnage.id ? newPerson : person
+                person.id === personToChange.id ? newPerson : person
               )
             );
+          })
+          .then(() => {
+            setNotification(`Added ${newName}`);
+            setTimeout(() => {
+              setNotification("");
+            }, 5000);
           });
       }
       return;
     }
-    personService.create(newPerson).then((person) => {
-      setPersons([...persons, person]);
-    });
+    personService
+      .create(newPerson)
+      .then((person) => {
+        setPersons([...persons, person]);
+      })
+      .then(() => {
+        setNotification(`Added ${newName}`);
+        setTimeout(() => {
+          setNotification("");
+        }, 5000);
+      });
+
     setNewName("");
     setNewNumber("");
   };
@@ -75,6 +92,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification notification={notification} />
       <Filter value={search} onSearch={handleSearch} />
 
       <h2>Add a new</h2>
