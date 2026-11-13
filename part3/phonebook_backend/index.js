@@ -24,8 +24,7 @@ let persons = [
 const express = require("express");
 const morgan = require("morgan");
 const app = express();
-const cors = require("cors");
-app.use(cors());
+app.use(express.static("dist"));
 
 const generateID = () => {
   const id = Math.floor(Math.random() * 1000000).toString();
