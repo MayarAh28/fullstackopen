@@ -24,6 +24,8 @@ let persons = [
 const express = require("express");
 const morgan = require("morgan");
 const app = express();
+const cors = require("cors");
+app.use(cors());
 
 const generateID = () => {
   const id = Math.floor(Math.random() * 1000000).toString();
@@ -88,7 +90,7 @@ app.post("/api/persons", (request, response) => {
   response.json(newPerson);
 });
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
