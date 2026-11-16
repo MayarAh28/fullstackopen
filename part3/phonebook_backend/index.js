@@ -8,10 +8,14 @@ const app = express();
 app.use(express.static("dist"));
 app.use(express.json());
 
-const generateID = () => {
-  const id = Math.floor(Math.random() * 1000000).toString();
-  return id;
+const errorHandler = (error, request, response, next) => {
+  console.error(error.message);
+  if (error.name === "CastError") {
+    return response.status(400).send({ error: "malformatted id" });
+  }
+  next(error);
 };
+
 morgan.token("body", function getBody(request, response) {
   return JSON.stringify(request.body);
 });
@@ -61,6 +65,8 @@ app.post("/api/persons", (request, response) => {
     response.json(savedPerson);
   });
 });
+
+app.use(errorHandler);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
