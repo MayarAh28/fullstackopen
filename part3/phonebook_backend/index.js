@@ -30,17 +30,24 @@ app.get("/api/persons", (request, response) => {
   });
 });
 
-app.get("/api/persons/:id", (request, response) => {
-  Person.findById(request.params.id).then((person) => {
-    response.json(person);
-  });
+app.get("/api/persons/:id", (request, response, next) => {
+  Person.findById(request.params.id)
+    .then((person) => {
+      if (person) response.json(person);
+      else response.status(404).end();
+    })
+    .catch((error) => next(error));
 });
 
-app.get("/info", (request, response) => {
+app.get("/info", (request, response, next) => {
   const now = new Date();
-  response.send(`<p>Phonebook has info for ${persons.length} people</p>
-    <p>${now}</p>
-    `);
+  Person.find({})
+    .then((persons) => {
+      response.send(`<p>Phonebook has info for ${persons.length} people</p>
+      <p>${now}</p>
+      `);
+    })
+    .catch((error) => next(error));
 });
 
 app.delete("/api/persons/:id", (request, response, next) => {
