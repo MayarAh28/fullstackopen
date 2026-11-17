@@ -59,22 +59,23 @@ const App = () => {
       ) {
         personService
           .changeNumber(personToChange.id, newPerson)
-          .then((newPerson) => {
+          .then((returnedPerson) => {
             setPersons(
               persons.map((person) =>
-                person.id === personToChange.id ? newPerson : person
+                person.id === personToChange.id ? returnedPerson : person
               )
             );
-          })
-          .then(() => {
-            setNotification(`Added ${newName}`);
+            setNotification(`Updated ${newName}`);
+            setNewName("");
+            setNewNumber("");
             setTimeout(() => {
               setNotification("");
             }, 5000);
           })
-          .catch(() => {
+          .catch((error) => {
             setError(
-              `Information of ${newName} has already been removed from server`
+              error.response?.data?.error ||
+                `Information of ${newName} has already been removed from server`
             );
             setTimeout(() => {
               setError("");
@@ -87,12 +88,12 @@ const App = () => {
       .create(newPerson)
       .then((person) => {
         setPersons([...persons, person]);
-      })
-      .then(() => {
         setNotification(`Added ${newName}`);
         setTimeout(() => {
           setNotification("");
         }, 5000);
+        setNewName("");
+        setNewNumber("");
       })
       .catch((error) => {
         setError(error.response.data.error);
@@ -100,9 +101,6 @@ const App = () => {
           setError("");
         }, 5000);
       });
-
-    setNewName("");
-    setNewNumber("");
   };
 
   return (
