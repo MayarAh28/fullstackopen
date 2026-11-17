@@ -93,6 +93,12 @@ const App = () => {
         setTimeout(() => {
           setNotification("");
         }, 5000);
+      })
+      .catch((error) => {
+        setError(error.response.data.error);
+        setTimeout(() => {
+          setError("");
+        }, 5000);
       });
 
     setNewName("");
