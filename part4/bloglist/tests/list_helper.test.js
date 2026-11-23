@@ -109,3 +109,23 @@ describe("favorite blog", () => {
     assert.deepStrictEqual(listHelper.favoriteBlog(blogs), maxBlog);
   });
 });
+describe("most blog", () => {
+  const mostAuthor = {
+    author: "Robert C. Martin",
+    blogs: 3,
+  };
+  test("of empty list is null", () => {
+    assert.deepStrictEqual(listHelper.mostBlogs([]), null);
+  });
+
+  test("the max of the one item list is the item itself", () => {
+    assert.deepStrictEqual(listHelper.mostBlogs([blogs[0]]), {
+      author: blogs[0].author,
+      blogs: 1,
+    });
+  });
+
+  test("the max of the list is right", () => {
+    assert.deepStrictEqual(listHelper.mostBlogs(blogs), mostAuthor);
+  });
+});
