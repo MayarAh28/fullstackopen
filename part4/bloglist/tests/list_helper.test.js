@@ -53,6 +53,13 @@ const blogs = [
   },
 ];
 
+test("dummy returns one", () => {
+  const emptyBlogs = [];
+
+  const result = listHelper.dummy(emptyBlogs);
+  assert.strictEqual(result, 1);
+});
+
 describe("total likes", () => {
   const listWithOneBlog = [
     {
@@ -77,6 +84,28 @@ describe("total likes", () => {
 
   test("of a bigger list is calculated right", () => {
     const result = listHelper.totalLikes(blogs);
-    assert.strictEqual(result,36)
+    assert.strictEqual(result, 36);
+  });
+});
+
+describe("favorite blog", () => {
+  const maxBlog = {
+    _id: "5a422b3a1b54a676234d17f9",
+    title: "Canonical string reduction",
+    author: "Edsger W. Dijkstra",
+    url: "http://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD808.html",
+    likes: 12,
+    __v: 0,
+  };
+  test("of empty list is null", () => {
+    assert.deepStrictEqual(listHelper.favoriteBlog([]), null);
+  });
+
+  test("the max of the one item list is the item itself", () => {
+    assert.deepStrictEqual(listHelper.favoriteBlog([maxBlog]), maxBlog);
+  });
+
+  test("the max of the list is right", () => {
+    assert.deepStrictEqual(listHelper.favoriteBlog(blogs), maxBlog);
   });
 });
