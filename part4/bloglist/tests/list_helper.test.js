@@ -109,6 +109,7 @@ describe("favorite blog", () => {
     assert.deepStrictEqual(listHelper.favoriteBlog(blogs), maxBlog);
   });
 });
+
 describe("most blog", () => {
   const mostAuthor = {
     author: "Robert C. Martin",
@@ -127,5 +128,26 @@ describe("most blog", () => {
 
   test("the max of the list is right", () => {
     assert.deepStrictEqual(listHelper.mostBlogs(blogs), mostAuthor);
+  });
+});
+
+describe("most likes", () => {
+  const mostAuthor = {
+    author: "Edsger W. Dijkstra",
+    likes: 17,
+  };
+  test("of empty list is null", () => {
+    assert.deepStrictEqual(listHelper.mostLikes([]), null);
+  });
+
+  test("the max of the one item list is the item itself", () => {
+    assert.deepStrictEqual(listHelper.mostLikes([blogs[0]]), {
+      author: blogs[0].author,
+      likes: blogs[0].likes,
+    });
+  });
+
+  test("the max of the list is right", () => {
+    assert.deepStrictEqual(listHelper.mostLikes(blogs), mostAuthor);
   });
 });
