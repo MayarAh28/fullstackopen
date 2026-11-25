@@ -30,7 +30,7 @@ test("verify that the unique identfier called id", async () => {
   assert(Object.hasOwn(blog, "id"));
 });
 
-test.only("a valid blog can be added", async () => {
+test("a valid blog can be added", async () => {
   const newBlog = {
     title: "Test api endpoints",
     author: "Test Test",
@@ -48,6 +48,22 @@ test.only("a valid blog can be added", async () => {
   assert.strictEqual(blogs.length, helper.initialBlogs.length + 1);
   const titles = blogs.map((blog) => blog.title);
   assert(titles.includes("Test api endpoints"));
+});
+
+test("if the likes property is missing it will default to zero", async () => {
+  const newBlog = {
+    title: "Test api endpoints",
+    author: "Test Test",
+    url: "https://dev.com/",
+  };
+  await api
+    .post("/api/blogs")
+    .send(newBlog)
+    .expect(201)
+    .expect("Content-Type", /application\/json/);
+  const blogs = await helper.blogsInDb();
+  const addedBlog = blogs[blogs.length - 1];
+  assert.strictEqual(addedBlog.likes, 0);
 });
 
 after(async () => {
