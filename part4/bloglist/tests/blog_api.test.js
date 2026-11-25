@@ -21,8 +21,15 @@ test("blogs are returned as json", async () => {
 
 test("all blogs are returned", async () => {
   const blogs = await helper.blogsInDb();
-  assert.strictEqual(blogs.length, helper.initialBlogs.length)
+  assert.strictEqual(blogs.length, helper.initialBlogs.length);
 });
+
+test.only("verify that the unique identfier called id", async () => {
+  const blogs = await helper.blogsInDb();
+  const blog = blogs[0];
+  assert(Object.hasOwn(blog, "id"));
+});
+
 
 after(async () => {
   await mongoose.connection.close();
