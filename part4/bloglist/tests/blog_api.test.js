@@ -88,6 +88,21 @@ test("if delete blog by id successfully", async () => {
   assert.strictEqual(blogsAtEnd.length, blogsAtStart.length - 1);
 });
 
+test("if blog updated successfully", async () => {
+  const blogsAtStart = await helper.blogsInDb();
+  const blogToUpdate = blogsAtStart[0];
+  await api
+    .put(`/api/blogs/${blogToUpdate.id}`)
+    .send({ likes: 32 })
+    .expect(200)
+    .expect("Content-Type", /application\/json/);
+
+  const blogsAtEnd = await helper.blogsInDb();
+  const updatedBlog = blogsAtEnd.find((blog) => blog.id === blogToUpdate.id);
+
+  assert.strictEqual(updatedBlog.likes, 32);
+});
+
 after(async () => {
   await mongoose.connection.close();
 });
