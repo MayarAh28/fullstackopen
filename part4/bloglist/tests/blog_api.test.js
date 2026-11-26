@@ -75,6 +75,19 @@ test("if the title or url are missing return 400", async () => {
   await api.post("/api/blogs").send(newBlog).expect(400);
 });
 
+test.only("if delete blog by id successfully", async () => {
+  const blogsAtStart = await helper.blogsInDb();
+  const blogToDelete = blogsAtStart[0];
+
+  await api.delete(`/api/blogs/${blogToDelete.id}`).expect(204);
+
+  const blogsAtEnd = await helper.blogsInDb();
+  blogIds = blogsAtEnd.map((blog) => blog.id);
+  assert(!blogIds.includes(blogToDelete.id));
+
+  assert.strictEqual(blogsAtEnd.length, blogsAtStart.length - 1);
+});
+
 after(async () => {
   await mongoose.connection.close();
 });
