@@ -75,7 +75,7 @@ test("if the title or url are missing return 400", async () => {
   await api.post("/api/blogs").send(newBlog).expect(400);
 });
 
-test.only("if delete blog by id successfully", async () => {
+test("if delete blog by id successfully", async () => {
   const blogsAtStart = await helper.blogsInDb();
   const blogToDelete = blogsAtStart[0];
 
